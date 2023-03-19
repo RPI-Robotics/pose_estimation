@@ -45,5 +45,7 @@ for i in range(25):
 
 
 # 12 zones, 3upx4wide grid
-# 9 pieces per zone, 3x3 grid
-# 108 pieces total
+# 16 pieces per zone, 4x4 grid
+# 192 pieces total
+
+# 12 pieces upx16 pieces wide
