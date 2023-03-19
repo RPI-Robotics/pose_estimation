@@ -10,9 +10,9 @@ pose = mpPose.Pose()
 cap = cv2.VideoCapture(0)
 pTime = 0
 # 2d array to track the position of the landmarks 50x50
-arr = [['.' for i in range(200)] for j in range(70)]
+arr = [['.' for i in range(16)] for j in range(12)]
 k=0
-while k<100:
+while k<50:
     success, img = cap.read()
     imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     results = pose.process(imgRGB)
@@ -25,7 +25,7 @@ while k<100:
             cx, cy = int(lm.x*w), int(lm.y*h)
             cv2.circle(img, (cx, cy), 5, (255, 0, 0), cv2.FILLED)
             ##print(lm.y*h,lm.x*w)
-            arr[int(lm.y*h/40)][int(lm.x*w/15)] = 0
+            arr[int(lm.y*h/120)][int(lm.x*w/35)] = 0 ##scale the input to fit on the grid
             ##print(h, w)
 
     cTime = time.time()
@@ -37,9 +37,9 @@ while k<100:
     cv2.imshow("Image", img)
     cv2.waitKey(1)
 
-# print array in grid format
-for i in range(25):
-    for j in range(40):
+# print array in grid format, the grid
+for i in range(len(arr)):
+    for j in range(len(arr[i])):
         print(arr[i][j], end="")
     print()
 
